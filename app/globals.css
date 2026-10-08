@@ -27,6 +27,13 @@ html {
 .marquee-track {
   animation: marquee 40s linear infinite;
 }
-.marquee-track:hover {
+.marquee-viewport:hover .marquee-track {
   animation-play-state: paused;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
