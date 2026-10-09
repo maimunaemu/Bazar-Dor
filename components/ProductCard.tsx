@@ -7,7 +7,7 @@ export default function ProductCard({ p }: { p: Product }) {
   return (
     <Link
       href={`/product/${p.slug}`}
-      className="block rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+      className="block rounded-xl border border-gray-200 hover:border-green-600 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
     >
       <div className="flex items-center gap-3">
         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-soft text-xl">

@@ -50,7 +50,9 @@ export default function NavbarClient({
           </div>
 
           <div className="leading-tight">
-            <p className="text-sm font-bold sm:text-base">বাজার দর</p>
+            <p className="!block text-sm font-bold text-gray-900 sm:text-base">
+  বাজার দর
+</p>
 
             <p
               className="text-[10px] text-gray-500 sm:text-xs"
