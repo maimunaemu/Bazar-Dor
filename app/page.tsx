@@ -19,23 +19,23 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <div className="mx-auto max-w-6xl space-y-10 px-4 pb-12">
+      <div className="mx-auto w-full max-w-[1120px] space-y-10 pb-12">
         <section>
-          <SectionHeader title="আজ দাম বেড়েছে ▲" subtitle="সবচেয়ে বেশি দাম বেড়েছে এমন ৬টি পণ্য" />
+          <SectionHeader title="আজ দাম বেড়েছে" direction="up" />
           <ProductGrid products={risers} />
         </section>
 
         <section>
-          <SectionHeader title="আজ দাম কমেছে ▼" subtitle="সবচেয়ে বেশি দাম কমেছে এমন ৬টি পণ্য" />
+          <SectionHeader title="আজ দাম কমেছে" direction="down" />
           <ProductGrid products={fallers} />
         </section>
 
         <section>
           <SectionHeader
-            id="সব-পণ্য"
-            title="সব পণ্য"
-            subtitle="সব প্রয়োজনীয় পণ্যের আজকের দাম"
-          />
+  id="সব-পণ্য"
+  title="সব পণ্য"
+  subtitle={`মোট ${products.length} টি পণ্য দেখানো হচ্ছে`}
+/>
           <ProductGrid products={products} />
         </section>
       </div>

@@ -40,7 +40,7 @@ export default function NavbarClient({
       <div className="flex items-center justify-between py-2">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand">
+          <div className="flex h-9 w-9 items-center justify-center rounded-[12px] bg-brand">
             <Image
               src="/logo-icon.png"
               alt="বাজার দর লোগো"
