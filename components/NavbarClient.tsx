@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -6,9 +7,7 @@ import { usePathname } from "next/navigation";
 
 import { banglaDate } from "@/lib/bn";
 import type { Category } from "@/lib/types";
-import UserMenu, { type NavUser } from "./UserMenu";
-
-const PREVIEW_LOGGED_IN = false;
+import type { NavUser } from "./UserMenu";
 
 export default function NavbarClient({
   categories,
@@ -18,14 +17,6 @@ export default function NavbarClient({
   user?: NavUser | null;
 }) {
   const pathname = usePathname();
-
-  const currentUser: NavUser | null = PREVIEW_LOGGED_IN
-    ? {
-        name: "Pezwan Ahmed",
-        email: "pezwan@example.com",
-        image: null,
-      }
-    : user;
 
   const linkCls = (active: boolean) =>
     `flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition ${
@@ -51,8 +42,8 @@ export default function NavbarClient({
 
           <div className="leading-tight">
             <p className="!block text-sm font-bold text-gray-900 sm:text-base">
-  বাজার দর
-</p>
+              বাজার দর
+            </p>
 
             <p
               className="text-[10px] text-gray-500 sm:text-xs"
@@ -63,14 +54,24 @@ export default function NavbarClient({
           </div>
         </Link>
 
-        {/* Auth */}
+        {/* Authentication */}
         <div className="flex items-center gap-2">
-          {currentUser ? (
-            <UserMenu
-              user={currentUser}
-              onSignOut={() => {}}
-            />
-          ) : (
+          
+{user ? (
+  <Link
+    href="/profile"
+    aria-label="আমার প্রোফাইল"
+    title={user.name}
+    className="flex h-10 min-w-10 items-center justify-center rounded-full bg-brand px-3 text-sm font-bold uppercase text-white transition hover:bg-brand-dark"
+  >
+    {user.name
+      .trim()
+      .split(/\s+/)
+      .map((part) => part[0])
+      .join("")
+      .slice(0, 2)}
+  </Link>
+) : (
             <>
               <Link
                 href="/signin"
