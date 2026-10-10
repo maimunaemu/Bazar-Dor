@@ -1,5 +1,8 @@
 
-import { notFound } from "next/navigation";
+import { headers } from "next/headers";
+import { notFound, redirect } from "next/navigation";
+
+import { auth } from "@/lib/auth";
 import { getProduct } from "@/lib/api";
 import { UNIT_BN } from "@/lib/types";
 
@@ -8,6 +11,16 @@ type Props = {
 };
 
 export default async function ProductDetailsPage({ params }: Props) {
+  // Check whether the user is signed in
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  // If not signed in, redirect to the sign-in page
+  if (!session) {
+    redirect("/signin");
+  }
+
   const { slug } = await params;
   const product = await getProduct(slug);
 
@@ -22,6 +35,7 @@ export default async function ProductDetailsPage({ params }: Props) {
 
   const minPrice = prices.length ? Math.min(...prices) : 0;
   const maxPrice = prices.length ? Math.max(...prices) : 0;
+
   const avgPrice = prices.length
     ? Math.round(
         prices.reduce((sum, price) => sum + price, 0) / prices.length
@@ -110,7 +124,7 @@ export default async function ProductDetailsPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Price Summary and Market Table - One Frame */}
+      {/* Price Summary and Market Table */}
       <section className="min-h-[847px] w-full rounded-2xl border border-gray-200 bg-white p-6">
         {/* Price Summary */}
         <h2 className="mb-4 text-lg font-bold text-gray-900">
