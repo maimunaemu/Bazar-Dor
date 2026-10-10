@@ -2,13 +2,28 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 
 export default function SignInPage() {
   const router = useRouter();
+const searchParams = useSearchParams();
+
+
+useEffect(() => {
+  if (searchParams.get("reason") === "auth-required") {
+    toast.error("এই পেজটি দেখতে আগে সাইন ইন করুন।", {
+      id: "auth-required",
+      duration: 4000,
+    });
+
+    router.replace("/signin");
+  }
+}, [searchParams, router]);
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

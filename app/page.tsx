@@ -19,7 +19,8 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <div className="mx-auto w-full max-w-[1120px] space-y-10 pb-12">
+     
+<div className="mx-auto w-full max-w-[1120px] space-y-10 px-4 pb-12 sm:px-6">
         <section>
           <SectionHeader title="আজ দাম বেড়েছে" direction="up" />
           <ProductGrid products={risers} />

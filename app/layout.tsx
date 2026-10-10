@@ -27,7 +27,12 @@ return (
     className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
   >
     <body className="flex min-h-screen flex-col">
-      <Toaster position="top-right" />
+      <Toaster
+  position="top-right"
+  toastOptions={{
+    duration: 4000,
+  }}
+/>
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />
