@@ -5,7 +5,7 @@ export default function Hero() {
 return ( <section className="mx-auto max-w-6xl px-4 py-8 md:py-12"> <div className="grid items-center gap-6 rounded-[24px] border border-[#d1ddd3] bg-white p-5 md:grid-cols-2 md:p-8"> <div> <span className="inline-block rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand">
 আজকের বাজার দর • {banglaDate()} </span>
 
-```
+
       <h1 className="mt-3 text-3xl font-bold leading-tight sm:text-4xl">
         আজকের বাজারের দাম এক নজরে
       </h1>
